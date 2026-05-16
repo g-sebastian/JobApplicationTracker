@@ -1,4 +1,5 @@
 public class JobApplication {
+    private int id;
     private String company;
     private String position;
     private String location;
@@ -8,7 +9,8 @@ public class JobApplication {
     private String notes;
 
 
-    public JobApplication(String company, String position, String location, String jobLink, String applicationDate, String status, String notes) {
+    public JobApplication(int id, String company, String position, String location, String jobLink, String applicationDate, String status, String notes) {
+        this.id = id;
         this.company = company;
         this.position = position;
         this.location = location;
@@ -57,5 +59,9 @@ public class JobApplication {
 
     public String getNotes() {
         return notes;
+    }
+
+    public int getId() {
+        return id;
     }
 }
