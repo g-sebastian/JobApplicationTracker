@@ -19,7 +19,7 @@ public class Main {
             switch (choice) {
                 case 1 -> addApplication();
                 case 2 -> viewAllApplications();
-                case 3 -> System.out.println("noch nicht implementiert");
+                case 3 -> System.out.println("ENDE WOCHE 2");
                 case 4 -> System.out.println("noch nicht implementiert");
                 case 5 -> System.out.println("noch nicht implementiert");
                 case 6 -> System.out.println("noch nicht implementiert");
