@@ -20,13 +20,81 @@ public class Main {
                 case 1 -> addApplication();
                 case 2 -> viewAllApplications();
                 case 3 -> updateApplicationStatus();
-                case 4 -> System.out.println("noch nicht implementiert");
-                case 5 -> System.out.println("noch nicht implementiert");
+                case 4 -> editApplication();
+                case 5 -> deleteApplication();
                 case 6 -> System.out.println("noch nicht implementiert");
                 case 7 -> System.out.println("noch nicht implementiert");
                 default -> System.out.println("Invalid option. Please try again.");
 
             }
+        }
+    }
+
+    public static void showMenu() {
+        System.out.println("====================================================");
+        System.out.println("              JOB APPLICATION TRACKER               ");
+        System.out.println("====================================================");
+        System.out.println();
+        System.out.println();
+        System.out.println("[1] Add new application");
+        System.out.println("[2] View all applications");
+        System.out.println("[3] Update application status");
+        System.out.println("[4] Edit application");
+        System.out.println("[5] Delete application");
+        System.out.println("[6] View statistics");
+        System.out.println("[7] Save and exit");
+
+        System.out.println();
+        System.out.println();
+        System.out.println("Please choose an option:");
+    }
+
+    private static void deleteApplication() {
+    }
+
+    private static void editApplication() {
+        System.out.println("----------------------------");
+        System.out.println("      EDIT APPLICATION      ");
+        System.out.println("----------------------------");
+
+        if(applicationsList.isEmpty()){
+            System.out.println("No applications found.");
+        } else {
+            for (JobApplication application : applicationsList){
+                application.displayReduced();
+            }
+        }
+        System.out.println("Please enter the id of the application you want to edit!");
+        int idToEdit = scanner.nextInt();
+
+        JobApplication job = applicationsList.get(idToEdit);
+
+        System.out.println();
+        System.out.println("What do you want to edit?");
+        System.out.println("[1] Company name");
+        System.out.println("[2] Position title");
+        System.out.println("[3] Location");
+        System.out.println("[4] Job link");
+        System.out.println("[5] Application Date");
+        System.out.println("[6] Status");
+        System.out.println("[7] Notes");
+        System.out.println();
+        System.out.println("Please enter the option you want to edit: ");
+        int option = scanner.nextInt();
+
+        System.out.println();
+        System.out.println("Please enter the updated version: ");
+        String update = scanner.nextLine();
+
+        switch (option){
+            case 1 -> job.setCompany(update);
+            case 2 -> job.setPosition(update);
+            case 3 -> job.setLocation(update);
+            case 4 -> job.setJobLink(update);
+            case 5 -> job.setApplicationDate(update);
+            case 6 -> job.setStatus(update);
+            case 7 -> job.setNotes(update);
+            default -> System.out.println("Invalid choice, please try again!");
         }
     }
 
@@ -103,24 +171,5 @@ public class Main {
 
         System.out.println("Application added successfully!");
 
-    }
-
-    public static void showMenu() {
-        System.out.println("====================================================");
-        System.out.println("              JOB APPLICATION TRACKER               ");
-        System.out.println("====================================================");
-        System.out.println();
-        System.out.println();
-        System.out.println("[1] Add new application");
-        System.out.println("[2] View all applications");
-        System.out.println("[3] Update application status");
-        System.out.println("[4] Edit application");
-        System.out.println("[5] Delete application");
-        System.out.println("[6] View statistics");
-        System.out.println("[7] Save and exit");
-
-        System.out.println();
-        System.out.println();
-        System.out.println("Please choose an option:");
     }
 }

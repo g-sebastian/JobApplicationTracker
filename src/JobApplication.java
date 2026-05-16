@@ -70,6 +70,34 @@ public class JobApplication {
         this.status = status;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setJobLink(String jobLink) {
+        this.jobLink = jobLink;
+    }
+
+    public void setApplicationDate(String applicationDate) {
+        this.applicationDate = applicationDate;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
     public void displayReduced() {
         System.out.println("------------------------");
         System.out.print("Id: " + id);
