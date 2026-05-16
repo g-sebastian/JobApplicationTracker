@@ -19,7 +19,7 @@ public class Main {
             switch (choice) {
                 case 1 -> addApplication();
                 case 2 -> viewAllApplications();
-                case 3 -> System.out.println("ENDE WOCHE 2");
+                case 3 -> updateApplicationStatus();
                 case 4 -> System.out.println("noch nicht implementiert");
                 case 5 -> System.out.println("noch nicht implementiert");
                 case 6 -> System.out.println("noch nicht implementiert");
@@ -28,6 +28,33 @@ public class Main {
 
             }
         }
+    }
+
+    private static void updateApplicationStatus() {
+        System.out.println("----------------------------");
+        System.out.println(" UPDATE APPLICATION STATUS  ");
+        System.out.println("----------------------------");
+
+        if(applicationsList.isEmpty()){
+            System.out.println("No applications found.");
+        } else {
+            for (JobApplication application : applicationsList){
+                application.displayReduced();
+            }
+        }
+        System.out.println("Please enter the id of the application status you want to edit!");
+        int idToEdit = scanner.nextInt();
+
+        JobApplication job = applicationsList.get(idToEdit);
+
+        System.out.println();
+        System.out.println("Enter the new status: ");
+        String newStatus = scanner.nextLine();
+
+        job.setStatus(newStatus);
+
+        System.out.println();
+        System.out.println("Status successfully changed to: " + newStatus);
     }
 
     private static void viewAllApplications() {

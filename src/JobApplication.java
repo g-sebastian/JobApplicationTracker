@@ -22,6 +22,7 @@ public class JobApplication {
 
     public void displayApplication() {
         System.out.println("------------------------");
+        System.out.println("ID: " + id);
         System.out.println("Company: " + company);
         System.out.println("Position: " + position);
         System.out.println("Location: " + location);
@@ -63,5 +64,18 @@ public class JobApplication {
 
     public int getId() {
         return id;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void displayReduced() {
+        System.out.println("------------------------");
+        System.out.print("Id: " + id);
+        System.out.print(" Company: " + company);
+        System.out.print(" Position: " + position);
+        System.out.print(" Current status: " + status);
+        System.out.println("------------------------");
     }
 }
