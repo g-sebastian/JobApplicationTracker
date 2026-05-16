@@ -2,14 +2,21 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.println("====================================================");
+        System.out.println("              JOB APPLICATION TRACKER               ");
+        System.out.println("====================================================");
+        System.out.println();
+        System.out.println();
+        System.out.println("[1] Add new application");
+        System.out.println("[2] View all applications");
+        System.out.println("[3] Update application status");
+        System.out.println("[4] Edit application");
+        System.out.println("[5] Delete application");
+        System.out.println("[6] View statistics");
+        System.out.println("[7] Save and exit");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        System.out.println();
+        System.out.println();
+        System.out.println("Please choose an option:");
     }
 }
