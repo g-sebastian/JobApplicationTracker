@@ -7,9 +7,11 @@ public class Main {
     private static ArrayList<JobApplication> applicationsList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
     private static int nextId = 0;
+    private static FileManager fileManager = new FileManager();
 
     public static void main(String[] args) {
         boolean running = true;
+        fileManager.loadApplications(applicationsList);
 
         while (running) {
             showMenu();
@@ -23,8 +25,8 @@ public class Main {
                 case 3 -> updateApplicationStatus();
                 case 4 -> editApplication();
                 case 5 -> deleteApplication();
-                case 6 -> System.out.println("noch nicht implementiert");
-                case 7 -> System.out.println("noch nicht implementiert");
+                case 6 -> viewStatistics();
+                case 7 -> fileManager.saveApplications(applicationsList);
                 default -> System.out.println("Invalid option. Please try again.");
 
             }
@@ -48,6 +50,9 @@ public class Main {
         System.out.println();
         System.out.println();
         System.out.println("Please choose an option:");
+    }
+
+    private static void viewStatistics() {
     }
 
     private static void deleteApplication() {
