@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         boolean running = true;
         fileManager.loadApplications(applicationsList);
+        nextId = applicationsList.size(); // anpassen dass nächster Index richtig ist
 
         while (running) {
             showMenu();
@@ -26,7 +27,10 @@ public class Main {
                 case 4 -> editApplication();
                 case 5 -> deleteApplication();
                 case 6 -> viewStatistics();
-                case 7 -> fileManager.saveApplications(applicationsList);
+                case 7 -> {
+                    fileManager.saveApplications(applicationsList);
+                    running = false;
+                }
                 default -> System.out.println("Invalid option. Please try again.");
 
             }
