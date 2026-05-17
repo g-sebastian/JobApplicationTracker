@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 
@@ -50,6 +51,30 @@ public class Main {
     }
 
     private static void deleteApplication() {
+        System.out.println("----------------------------");
+        System.out.println("     DELETE APPLICATION     ");
+        System.out.println("----------------------------");
+
+        if(applicationsList.isEmpty()){
+            System.out.println("No applications found.");
+        } else {
+            for (JobApplication application : applicationsList){
+                application.displayReduced();
+            }
+        }
+        System.out.println("Please enter the id of the application you want to edit!");
+        int idToDelete = scanner.nextInt();
+        System.out.println("Are you sure you want to delete id: " + idToDelete + "? Y/N");
+        String input = scanner.nextLine().toUpperCase(Locale.ROOT);
+        if(input.equals("Y")){
+            applicationsList.remove(idToDelete);
+            System.out.println("Application with the id: " + idToDelete + " successfully deleted!");
+        } else if (input.equals("N")) {
+            System.out.println("Deletion of application with id: " + idToDelete + " cancelled.");
+        } else {
+            System.out.println("Invalid Input please try again!");
+        }
+
     }
 
     private static void editApplication() {
