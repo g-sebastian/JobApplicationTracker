@@ -42,8 +42,8 @@ public class FileManager {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             bufferedReader.readLine(); // header Zeile überspringen
 
-            while(bufferedReader.ready()){
-                String line = bufferedReader.readLine();
+            String line = bufferedReader.readLine();
+            while(line != null){
                 String[] splittedLine = line.split(";");
                 if(splittedLine.length == 8){
                     // hat alle Elemente
@@ -53,13 +53,12 @@ public class FileManager {
                 } else {
                     System.out.println("Skipped invalid line!");
                 }
+                line = bufferedReader.readLine();
             }
             bufferedReader.close();
 
-        } catch (FileNotFoundException e) {
-            System.out.println("Error occured while trying to read the applications.csv file.");
         } catch (IOException e) {
-            System.out.println("Error occured while trying to read the applications.csv file.");
+            System.out.println("No saved applications found. Starting with empty list.");
         }
     }
 }
