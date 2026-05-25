@@ -57,6 +57,73 @@ public class Main {
     }
 
     private static void viewStatistics() {
+        System.out.println("----------------------------");
+        System.out.println("          STATISTICS        ");
+        System.out.println("----------------------------");
+
+        if(applicationsList.isEmpty()){
+            System.out.println("No applications found.");
+            showMenu();
+        }
+
+        System.out.println("Total applications: " + applicationsList.size());
+        System.out.println("Saved: " + getSaved());
+        System.out.println("Applied: " + getApplied());
+        System.out.println("Interview: " + getInterview());
+        System.out.println("Rejected: " + getRejected());
+        System.out.println("Offer: " + getOffers());
+
+
+    }
+
+    private static int getOffers() {
+        int counter = 0;
+        for (JobApplication application : applicationsList) {
+            if(application.getStatus().equals("Offer")){
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    private static int getRejected() {
+        int counter = 0;
+        for (JobApplication application : applicationsList) {
+            if(application.getStatus().equals("Rejected")){
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    private static int getInterview() {
+        int counter = 0;
+        for (JobApplication application : applicationsList) {
+            if(application.getStatus().equals("Interview")){
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    private static int getApplied() {
+        int counter = 0;
+        for (JobApplication application : applicationsList) {
+            if(application.getStatus().equals("Applied")){
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    private static int getSaved() {
+        int counter = 0;
+        for (JobApplication application : applicationsList) {
+            if(application.getStatus().equals("Saved")){
+                counter++;
+            }
+        }
+        return counter;
     }
 
     private static void deleteApplication() {
@@ -116,6 +183,8 @@ public class Main {
         System.out.println("Please enter the option you want to edit: ");
         int option = scanner.nextInt();
 
+        if(option == 6) updateApplicationStatus();
+
         System.out.println();
         System.out.println("Please enter the updated version: ");
         String update = scanner.nextLine();
@@ -151,9 +220,21 @@ public class Main {
 
         System.out.println();
         System.out.println("Enter the new status: ");
-        String newStatus = scanner.nextLine();
+        System.out.println("[1] Saved");
+        System.out.println("[2] Applied");
+        System.out.println("[3] Interview");
+        System.out.println("[4] Rejected");
+        System.out.println("[5] Offer");
+        int newStatus = scanner.nextInt();
 
-        job.setStatus(newStatus);
+        switch (newStatus){
+            case 1 -> job.setStatus("Saved");
+            case 2 -> job.setStatus("Applied");
+            case 3 -> job.setStatus("Interview");
+            case 4 -> job.setStatus("Rejected");
+            case 5 -> job.setStatus("Offer");
+            default -> System.out.println("Invalid choice, please try again!");
+        }
 
         System.out.println();
         System.out.println("Status successfully changed to: " + newStatus);
@@ -194,7 +275,22 @@ public class Main {
         String applicationDate = scanner.nextLine();
 
         System.out.println("Status: ");
-        String status = scanner.nextLine();
+        System.out.println("[1] Saved");
+        System.out.println("[2] Applied");
+        System.out.println("[3] Interview");
+        System.out.println("[4] Rejected");
+        System.out.println("[5] Offer");
+        int newStatus = scanner.nextInt();
+        String status = "";
+
+        switch (newStatus){
+            case 1 -> status = "Saved";
+            case 2 -> status = "Applied";
+            case 3 -> status = "Interview";
+            case 4 -> status = "Rejected";
+            case 5 -> status = "Offer";
+            default -> System.out.println("Invalid choice, please try again!");
+        }
 
         System.out.println("Notes: ");
         String notes = scanner.nextLine();
