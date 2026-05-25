@@ -26,10 +26,6 @@ public class Main {
             } catch (NumberFormatException e) {
 
             }
-            if (choiceInt < 1 || choiceInt > 7){
-                System.out.println("Invalid choice, please try again!");
-                showMenu();
-            }
             switch (choiceInt) {
                 case 1 -> addApplication();
                 case 2 -> viewAllApplications();
@@ -73,7 +69,7 @@ public class Main {
 
         if(applicationsList.isEmpty()){
             System.out.println("No applications found.");
-            showMenu();
+            return;
         }
 
         System.out.println("Total applications: " + applicationsList.size());
@@ -308,7 +304,7 @@ public class Main {
         }
 
         System.out.println();
-        System.out.println("Status successfully changed to: " + newStatus);
+        System.out.println("Status successfully changed to: " + job.getStatus());
     }
 
     private static void viewAllApplications() {
