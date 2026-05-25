@@ -18,10 +18,18 @@ public class Main {
         while (running) {
             showMenu();
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            String choice = scanner.nextLine();
+            int choiceInt = -1;
+            try{
+                choiceInt = Integer.parseInt(choice);
+            } catch (NumberFormatException e) {
 
-            switch (choice) {
+            }
+            if (choiceInt < 1 || choiceInt > 7){
+                System.out.println("Invalid choice, please try again!");
+                showMenu();
+            }
+            switch (choiceInt) {
                 case 1 -> addApplication();
                 case 2 -> viewAllApplications();
                 case 3 -> updateApplicationStatus();
@@ -177,9 +185,18 @@ public class Main {
             }
         }
         System.out.println("Please enter the id of the application you want to edit!");
-        int idToEdit = scanner.nextInt();
+        String idToEdit = scanner.nextLine();
+        int idEdit = -1;
+        try {
+            idEdit = Integer.parseInt(idToEdit);
+        } catch (NumberFormatException e) {
+        }
+        if(idEdit == -1 || idEdit >= applicationsList.size()){
+            System.out.println("Invalid choice, please try again!");
+            return;
+        }
 
-        JobApplication job = applicationsList.get(idToEdit);
+        JobApplication job = applicationsList.get(idEdit);
 
         System.out.println();
         System.out.println("What do you want to edit?");
@@ -192,15 +209,26 @@ public class Main {
         System.out.println("[7] Notes");
         System.out.println();
         System.out.println("Please enter the option you want to edit: ");
-        int option = scanner.nextInt();
+        String option = scanner.nextLine();
+        int optionInt = -1;
+        try {
+            optionInt = Integer.parseInt(option);
+        } catch (NumberFormatException e) {
 
-        if(option == 6) updateApplicationStatus();
+        }
+
+        if(optionInt < 1 || optionInt > 7){
+            System.out.println("Invalid choice, please try again!");
+            return;
+        }
+
+        if(optionInt == 6) updateApplicationStatus();
 
         System.out.println();
         System.out.println("Please enter the updated version: ");
         String update = scanner.nextLine();
 
-        switch (option){
+        switch (optionInt){
             case 1 -> job.setCompany(update);
             case 2 -> job.setPosition(update);
             case 3 -> job.setLocation(update);
@@ -225,9 +253,19 @@ public class Main {
             }
         }
         System.out.println("Please enter the id of the application status you want to edit!");
-        int idToEdit = scanner.nextInt();
+        String idToEdit = scanner.nextLine();
+        int idEditInt = -1;
+        try {
+            idEditInt = Integer.parseInt(idToEdit);
+        } catch (NumberFormatException e){
 
-        JobApplication job = applicationsList.get(idToEdit);
+        }
+        if(idEditInt < 0 || idEditInt >= applicationsList.size()){
+            System.out.println("Invalid choice, please try again!");
+            return;
+        }
+
+        JobApplication job = applicationsList.get(idEditInt);
 
         System.out.println();
         System.out.println("Enter the new status: ");
@@ -236,9 +274,19 @@ public class Main {
         System.out.println("[3] Interview");
         System.out.println("[4] Rejected");
         System.out.println("[5] Offer");
-        int newStatus = scanner.nextInt();
+        String newStatus = scanner.nextLine();
+        int newStatusInt = -1;
+        try {
+            newStatusInt = Integer.parseInt(newStatus);
+        } catch (NumberFormatException e) {
 
-        switch (newStatus){
+        }
+        if(newStatusInt < 1 || newStatusInt > 5){
+            System.out.println("Invalid choice, please try again!");
+            return;
+        }
+
+        switch (newStatusInt){
             case 1 -> job.setStatus("Saved");
             case 2 -> job.setStatus("Applied");
             case 3 -> job.setStatus("Interview");
