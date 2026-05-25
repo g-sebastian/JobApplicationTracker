@@ -148,7 +148,7 @@ public class Main {
                 application.displayReduced();
             }
         }
-        System.out.println("Please enter the id of the application you want to edit!");
+        System.out.println("Please enter the id of the application you want to delete!");
         String idToDelete = scanner.nextLine();
         int idDelete = -1;
         try {
@@ -171,6 +171,7 @@ public class Main {
             System.out.println("Invalid Input please try again!");
         }
         updateIds();
+        nextId = applicationsList.size();
 
     }
 
@@ -357,6 +358,10 @@ public class Main {
             newStatusInt = Integer.parseInt(newStatus);
         } catch (NumberFormatException e) {
 
+        }
+        if(newStatusInt < 1 || newStatusInt > 5){
+            System.out.println("Invalid choice, please try again!");
+            return;
         }
 
         switch (newStatusInt){
