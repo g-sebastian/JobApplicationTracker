@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.stream.StreamSupport;
 
 
 public class Main {
@@ -139,11 +140,21 @@ public class Main {
             }
         }
         System.out.println("Please enter the id of the application you want to edit!");
-        int idToDelete = scanner.nextInt();
+        String idToDelete = scanner.nextLine();
+        int idDelete = -1;
+        try {
+            idDelete = Integer.parseInt(idToDelete);
+        } catch (NumberFormatException e) {
+
+        }
+        if(idDelete == -1 || idDelete >= applicationsList.size()){
+            System.out.println("Invalid Input please try again!");
+            return;
+        }
         System.out.println("Are you sure you want to delete id: " + idToDelete + "? Y/N");
         String input = scanner.nextLine().toUpperCase(Locale.ROOT);
         if(input.equals("Y")){
-            applicationsList.remove(idToDelete);
+            applicationsList.remove(idDelete);
             System.out.println("Application with the id: " + idToDelete + " successfully deleted!");
         } else if (input.equals("N")) {
             System.out.println("Deletion of application with id: " + idToDelete + " cancelled.");
@@ -280,10 +291,16 @@ public class Main {
         System.out.println("[3] Interview");
         System.out.println("[4] Rejected");
         System.out.println("[5] Offer");
-        int newStatus = scanner.nextInt();
+        String newStatus = scanner.nextLine();
         String status = "";
+        int newStatusInt = -1;
+        try {
+            newStatusInt = Integer.parseInt(newStatus);
+        } catch (NumberFormatException e) {
 
-        switch (newStatus){
+        }
+
+        switch (newStatusInt){
             case 1 -> status = "Saved";
             case 2 -> status = "Applied";
             case 3 -> status = "Interview";
