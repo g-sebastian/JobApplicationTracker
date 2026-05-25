@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         boolean running = true;
         fileManager.loadApplications(applicationsList);
+        updateIds();
         nextId = applicationsList.size(); // anpassen dass nächster Index richtig ist
 
         while (running) {
@@ -169,7 +170,14 @@ public class Main {
         } else {
             System.out.println("Invalid Input please try again!");
         }
+        updateIds();
 
+    }
+
+    private static void updateIds() {
+        for (int i = 0; i < applicationsList.size(); i++) {
+            applicationsList.get(i).setId(i);
+        }
     }
 
     private static void editApplication() {
@@ -222,7 +230,10 @@ public class Main {
             return;
         }
 
-        if(optionInt == 6) updateApplicationStatus();
+        if(optionInt == 6) {
+            updateApplicationStatus();
+            return;
+        }
 
         System.out.println();
         System.out.println("Please enter the updated version: ");
