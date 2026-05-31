@@ -236,6 +236,10 @@ public class Main {
         System.out.println("Please enter the updated version: ");
         String update = scanner.nextLine();
 
+        if(update.isEmpty()){
+            update = "/";
+        }
+
         switch (optionInt){
             case 1 -> job.setCompany(update);
             case 2 -> job.setPosition(update);
@@ -328,18 +332,33 @@ public class Main {
 
         System.out.println("Company name: ");
         String company = scanner.nextLine();
+        if(company.isEmpty()){
+            company = "/";
+        }
 
         System.out.println("Position title: ");
         String position = scanner.nextLine();
+        if(position.isEmpty()){
+            position = "/";
+        }
 
         System.out.println("Location: ");
         String location = scanner.nextLine();
+        if(location.isEmpty()){
+            location = "/";
+        }
 
         System.out.println("Job link: ");
         String jobLink = scanner.nextLine();
+        if(jobLink.isEmpty()){
+            jobLink = "/";
+        }
 
         System.out.println("Application Date: ");
         String applicationDate = scanner.nextLine();
+        if(applicationDate.isEmpty()){
+            applicationDate = "/";
+        }
 
         System.out.println("Status: ");
         System.out.println("[1] Saved");
@@ -371,6 +390,9 @@ public class Main {
 
         System.out.println("Notes: ");
         String notes = scanner.nextLine();
+        if(notes.isEmpty()){
+            notes = "/";
+        }
 
         JobApplication newJobApplication = new JobApplication(nextId,company,position,location,jobLink,applicationDate,status,notes);
         applicationsList.add(newJobApplication);

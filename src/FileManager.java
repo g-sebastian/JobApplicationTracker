@@ -27,6 +27,7 @@ public class FileManager {
                 line += application.getStatus();
                 line += ";";
                 line += application.getNotes();
+                line += ";";
                 printWriter.println(line);
             }
             printWriter.close();
@@ -45,6 +46,10 @@ public class FileManager {
             String line = bufferedReader.readLine();
             while(line != null){
                 String[] splittedLine = line.split(";");
+                System.out.println("Zeilenlänge " + splittedLine.length);
+                for (String s : splittedLine) {
+                    System.out.println(s);
+                }
                 if(splittedLine.length == 8){
                     // hat alle Elemente
                     JobApplication jobApplication =
